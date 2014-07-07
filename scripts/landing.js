@@ -74,9 +74,29 @@ function displayInfo() {
 	
 }
 
-//run this display function when enter is pressed on the form or when the search button is clicked
+// save the title of the movie for the leaderboard  
 $("form").on("submit", function(e){
-	e.preventDefault();
+	
+	var url = "/add"
+	var parameters = {
+		title: $(".movieVal").val() 
+	}
+	console.log(parameters)
+	$.ajax({
+		type: "POST",
+		url: url,
+		data: parameters, // serializes the form's elements.
+    success: function(data)
+           {
+               console.log("Success!"); 
+           },
+    cache: false
+	});
+	// run this display function when enter is pressed on the form or when the search button is clicked + prevent form submission
 	displayInfo();
+	return false;
 })
+
+
+
 

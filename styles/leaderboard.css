@@ -1,0 +1,20 @@
+.errorMessage {
+	color: red;
+	font-size: 18px;
+}
+
+.checkboxText {
+	font-weight: 300;
+}
+
+.mainHeading {
+	font-size: 26px;
+}
+
+li {
+	list-style: none;
+}
+
+.movieVal {
+	width: 220px;
+}

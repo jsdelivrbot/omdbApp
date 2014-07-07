@@ -1,14 +1,15 @@
 	<body>
 		<div class="container text-center">
+		
 
 		<h1 class = "mainHeading">Welcome to the OMDB movie search! Type in a title and click search to get started.</h1>
 
 		<span class="errorMessage">Please enter a title!</span>
 
 		<br>
-		<form action="">
+		<form name = "searchForm" action="/" method = "post" id = "addSearchForm">
 			<p>
-				<label for="movieName">Movie Title: </label> <input type="text" id = "movieName" class = "movieVal" required autofocus>
+				<label for="movieName">Movie Title: </label> <input type="text" id = "movieName" class = "movieVal" name = "titleSearched" required autofocus>
 			</p>	
 
 			<p>
@@ -33,8 +34,9 @@
 		
 			
 		</div>
-		
 
+
+		
 		</div>
 	</body>
 </html>
