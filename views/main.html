@@ -1,29 +1,25 @@
 	<body>
 		<div class="container text-center">
 
-		<h1>Using the API from http://www.omdbapi.com/, construct a single page app that will
+		<h1 class = "mainHeading">Welcome to the OMDB movie search! Type in a title and click search to get started.</h1>
 
-		have a search input box, movie search results, and movie detail portions.</h1>
-
-		<h2>
-			Use either Angular or Jquery to solve this problem. If you would like, you can
-
-		use some other front end javascript library (Backbone, Ember, React)
-
-		Submit us a github link to the project with proper commit messages.
-		</h2>
 
 		<span class="errorMessage">Please enter a title!</span>
 
 		<br>
+		<form action="">
+			<p>
+				<label for="movieName">Movie Title: </label> <input type="text" id = "movieName" class = "movieVal" required autofocus>
+			</p>	
 
-		<label for="movieName">Movie Title: </label> <input type="text" id = "movieName" class = "movieVal" required>
-		<p>
-			<input type="checkbox" class = "includeTomatoData" id ="tomatoCheck" > <label for="tomatoCheck" class = "checkboxText"> Check if you like to see Rotten Tomatoes data as well </label> 
-		</p>
-		<p>
-			<a href="javascript:void(0);" class = "btn btn-success searchButton">Search!</a>	
-		</p>
+			<p>
+				<input type="checkbox" class = "includeTomatoData" id ="tomatoCheck" > <label for="tomatoCheck" class = "checkboxText" > Check if you like to see Rotten Tomatoes data as well </label> 
+			</p>
+			
+			<p>
+				<input type = "submit" class = "btn btn-info searchButton" value ="Search!"></a>	
+			</p>
+		</form>
 		
 		<h2 class="desc">Movie Description:</h2>
 		<div class="searchResults">

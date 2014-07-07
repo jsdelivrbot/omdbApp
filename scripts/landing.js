@@ -1,28 +1,28 @@
 // hide any error messages + movie info 
-$(".desc").hide()
-$(".errorMessage").hide()
-$(".searchResults").hide()
-$(".movieDetails").hide()
+$(".desc").hide();
+$(".errorMessage").hide();
+$(".searchResults").hide();
+$(".movieDetails").hide();
 
 
-$(".searchButton").on("click", function() {
-	
+function displayInfo() {
+
 	// wipe out all existing html 
-	$(".searchResults").html("")
-	$(".movieDetails").html("")
+	$(".searchResults").html("");
+	$(".movieDetails").html("");
 	// first, a little validation to make sure there is some text
-		var tomatoes = ""
+		var tomatoes = "";
 
 		if ($(".movieVal").val()) {
 
-				var title = encodeURI($(".movieVal").val())
+				var title = encodeURI($(".movieVal").val());
 				
 				// clear the error message if it existed before
-				$(".errorMessage").hide()
+				$(".errorMessage").hide();
 				
 			// check to see if the user wants Rotten Tomatoes data
 				if ($(".includeTomatoData").is(":checked")) {
-					tomatoes = "&tomatoes=true"
+					tomatoes = "&tomatoes=true";
 				} 
 				else {
 					tomatoes = ""
@@ -44,24 +44,31 @@ $(".searchButton").on("click", function() {
 		  			// 
 		  			var searchResults = movieData.splice(0, 4)
 		  			
-		  			$(".desc").fadeIn()
+		  			$(".desc").fadeIn();
 
-		  			$(".searchResults").fadeIn()
-		  			$(".searchResults").append(searchResults)
+		  			$(".searchResults").fadeIn();
+		  			$(".searchResults").append(searchResults);
 
 
-		  			$(".movieDetails").fadeIn()
-		  			$(".movieDetails").append(movieData)
+		  			$(".movieDetails").fadeIn();
+		  			$(".movieDetails").append(movieData);
 
 		  			//we don't really need to show the user if the response was true...
-		  			$(".response").hide()
+		  			$(".response").hide();
 
 	  		});
 		}
 
 		// if no title is inputted, show the error message
 		else {
-			$(".errorMessage").show()
+			$(".errorMessage").show();
 		}
 	
+}
+
+//run this display function when enter is pressed on the form or when the search button is clicked
+$("form").on("submit", function(e){
+	e.preventDefault()
+	displayInfo();
 })
+
