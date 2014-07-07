@@ -4,7 +4,6 @@ $(".errorMessage").hide();
 $(".searchResults").hide();
 $(".movieDetails").hide();
 
-
 function displayInfo() {
 
 	// wipe out all existing html 
@@ -25,7 +24,7 @@ function displayInfo() {
 					tomatoes = "&tomatoes=true";
 				} 
 				else {
-					tomatoes = ""
+					tomatoes = "";
 				}
 
 				//make an ajax call to get the omdb data 
@@ -37,11 +36,18 @@ function displayInfo() {
 
 		  			// push each key value pair into an array of list items (make the class lowercase to avoid calling classes that start with a capital letter)
 		  			$.each( response, function( key, val ) {
-		    		movieData.push( "<li class='" + key.toLowerCase() + "'>" + key + " : "+  val + "</li>" );
+		    		
+		    		// let's show the poster image not just the URL
+			    		if (key === "Poster") {
+								movieData.push( "<p><li class='" + key.toLowerCase() + "'>" + key + " : "+  "<img src = " +  val + " alt ='Movie poster'>" + "</li><p>" );	
+			    					
+			    		}
+			    		else {
+			    			movieData.push( "<li class='" + key.toLowerCase() + "'>" + key + " : "+  val + "</li>" );	
+			    		}
 		  			});
 
-		  			console.log(movieData)
-		  			// 
+		  			// pick the first four things (title, year, rating, release date) to appear as our "Movie Description"
 		  			var searchResults = movieData.splice(0, 4)
 		  			
 		  			$(".desc").fadeIn();
@@ -56,6 +62,8 @@ function displayInfo() {
 		  			//we don't really need to show the user if the response was true...
 		  			$(".response").hide();
 
+		  			// clear the input field after a search
+		  			$(".movieVal").val("");
 	  		});
 		}
 
@@ -68,7 +76,7 @@ function displayInfo() {
 
 //run this display function when enter is pressed on the form or when the search button is clicked
 $("form").on("submit", function(e){
-	e.preventDefault()
+	e.preventDefault();
 	displayInfo();
 })
 
