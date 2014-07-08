@@ -96,7 +96,3 @@ $("form").on("submit", function(e){
 	displayInfo();
 	return false;
 })
-
-
-
-

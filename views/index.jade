@@ -1,16 +1,41 @@
-DOCTYPE
-html(lang="en")
-head
-	meta(charset="UTF-8")
-	title ombdApp
-	link(rel='stylesheet', href='http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css') 
-	style(type="text/css"): include ../styles/header.css
-	style(type="text/css"): include ../styles/main.css
-	script(type='text/javascript' src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js")
+include header.jade
+link(rel = "stylesheet" type="text/css" href = "public/css/main.css")
+br
+div.container
+	a.btn.btn-primary(href="/")
+		i.glyphicon.glyphicon-home  Home
+	a.btn.btn-primary(href="/leaderboard")
+		i.glyphicon.glyphicon-sort  Leaderboard
+	div.text-center
+		h1.mainHeading Welcome to the OMDB movie search! Type in a title and click search to get started.
+		
+		span.errorMessage Please enter a title!
+		
+		br
+		
+		form(name = "searchFrom" action="/" method = "post" id = "addSearchForm")
+		
+			p
+				label(for="movieName") Movie Title &nbsp
+				input(type="text" id= "movieName" class = "movieVal" name ="titleSearched" required autofocus)
+			p
+				input(type="checkbox" class = "indlucdeTomatoData" id ="tomatoCheck") 
+				label(for="tomatoCheck" class = "checkboxText") &nbsp Check if you like to see Rotten Tomatoes data as well
+			p
+				input(type="submit" class = "btn btn-info searchButton" value ="Search!")
 
-include header.html
-include main.html 
+		h2.desc Movie Description
+		
+		div.searchResults
 
-script(type="text/javascript"): include ../scripts/landing.js
+		hr
+
+		h2.desc Movie Details:
+		
+		div.movieDetails
+
+include footer.jade 
+
+script(type="text/javascript" src = "public/js/landing.js")
 
 	

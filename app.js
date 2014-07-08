@@ -5,6 +5,15 @@ var Search = require ('./models/search');
 var bodyParser = require('body-parser');
 app.use(bodyParser());
 
+// app.set('views', __dirname + '/views/');
+app.use(express.static(__dirname, '/public'));
+app.use('/public/css', express.static(__dirname + '/public/css'));
+app.use('/public/js', express.static(__dirname + '/public/js'));
+app.set('views', __dirname + '/views');
+app.set('view engine', 'jade')
+
+
+
 // DB CONFIG
 var db = mongoose.connection; // http://mongoosejs.com/docs/api.html#connection_Connection
 
@@ -21,7 +30,7 @@ mongoose.connect('mongodb://admin:GAFTW@kahana.mongohq.com:10063/omdbapp', { ser
 
 // main route 
 app.get('/', function(req,res){
-	res.render("index.jade")
+	res.render("index")
 });
 
 // add the title to the DB for leaderboard
@@ -40,21 +49,29 @@ app.post("/add", function(req, res) {
     return res.send(201);
   });
 
+//render the leaderboard page
 app.get('/leaderboard', function(req,res){
-	// do the mongo query in here
-	res.render("leaderboard.jade")
+	res.render("leaderboard")
 })
 
+//display the results from mongo
 app.get('/leaders', function(req,res) {
 		Search.find({}, function (err, searches) {
-         // var searchMap = {};
-         
-         // searches.forEach(function(search) {
-              // searchMap[search._id] = search;
          			res.send(searches);
           // }, 
           {};
     });
+});
+
+app.get('/remove', function(req,res) {
+  Search.remove({}, function(err){
+    if(err){
+      console.log("Error deleted db " + err);
+      res.send(500);
+    }
+  });
+  console.log("The leaderboard is deleted!");
+  res.send(200);
 });
 
 // 404 page

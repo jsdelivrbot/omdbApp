@@ -1,18 +1,18 @@
-DOCTYPE
-html(lang="en")
-head
-	meta(charset="UTF-8")
-	title ombdApp
-	link(rel='stylesheet', href='http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css') 
-	script(type='text/javascript' src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js")
-	style(type="text/css"): include ../styles/header.css
-	style(type="text/css"): include ../styles/leaderboard.css
-
-include header.html
-
+include header.jade
+link(rel='stylesheet', href='public/css/leaderboard.css') 
+br
 div.container
+	div.navbar-wrapper
+
+		a.btn.btn-primary(href="/")
+			i.glyphicon.glyphicon-home  Home
+		a.btn.btn-primary(href="/leaderboard")
+			i.glyphicon.glyphicon-sort  Leaderboard
+		a.btn.btn-danger.remove.pull-right
+			i.glyphicon.glyphicon-trash  Clear
+			
 	h1 Top Search Results:
-	div.leaderboard
 
+	div.leaderBoard
 
-script(type="text/javascript"): include ../scripts/leaderboard.js
+script(type="text/javascript" src= "public/js/leaderboard.js")
